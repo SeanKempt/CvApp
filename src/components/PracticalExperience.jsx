@@ -3,16 +3,22 @@ import React from 'react';
 class PracticalExperience extends React.Component {
   render() {
     return (
-      <div>
-        <label htmlFor="companyname">Company Name</label>
-        <input type="text" name="companyname" />
+      <div className="practicalexperience">
+        <div className="input-container">
+          <label htmlFor="companyname">Company Name</label>
+          <input type="text" name="companyname" />
+          <label htmlFor="positiontitle">Position title</label>
+          <input type="text" name="positiontitle" />
+        </div>
 
-        <label htmlFor="positiontitle">Position title</label>
-        <input type="text" name="positiontitle" />
-
-        <label htmlFor="datesworked">Dates worked</label>
-        <input type="date" name="datesworked" />
-
+        <div className="input-container">
+          <label htmlFor="datesworked">Dates Worked</label>
+          <div>
+            <input type="date" name="datesworked" id="workstart" />
+            To
+            <input type="date" name="datesworked" id="workend" />
+          </div>
+        </div>
         <label htmlFor="workdescription">Work Description</label>
         <textarea
           name="workdescription"

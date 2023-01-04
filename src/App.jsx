@@ -3,12 +3,14 @@ import Form from './components/Form';
 
 function App() {
   return (
-    <div>
-      <header className="header" />
-      <main className="main-wrapper">
+    <div className="wrapper">
+      <header className="header">
+        <h1>CV Generator</h1>
+      </header>
+      <main className="main-content">
         <Form />
       </main>
-      <footer className="wrapper" />
+      <footer className="footer">Created by Sean Kempt</footer>
     </div>
   );
 }
