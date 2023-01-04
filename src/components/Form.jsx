@@ -7,57 +7,40 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      firstName: '',
-      lastName: '',
-      phone: '',
-      email: '',
+      generalInfo: { firstName: '', lastName: '', phone: '', email: '' },
+      educationInfo: {
+        schoolName: '',
+        degreeLevel: '',
+        studyLevel: '',
+        studyDate: '',
+      },
     };
-
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handlePhoneChange = this.handlePhoneChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
   }
 
-  handleFirstNameChange = (e) => {
+  handleChange = (e) => {
     e.preventDefault();
     this.setState({
-      firstName: e.target.value,
-    });
-  };
-
-  handlePhoneChange = (e) => {
-    e.preventDefault();
-    this.setState({
-      phone: e.target.value,
-    });
-  };
-
-  handleEmailChange = (e) => {
-    e.preventDefault();
-    this.setState({
-      email: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
   render() {
-    const { firstName, lastName, phone, email } = this.state;
+    const { generalInfo, educationInfo } = this.state;
     return (
       <div className="cvform">
-        <form onSubmit={console.log({ phone, email })}>
+        <form>
           <h3>General Information</h3>
           <hr />
           <GeneralInfo
-            firstName={firstName}
-            lastName={lastName}
-            phone={phone}
-            email={email}
-            firstNameChange={this.handleFirstNameChange}
-            phoneChange={this.handlePhoneChange}
-            emailChange={this.handleEmailChange}
+            generalInfo={generalInfo}
+            handleChange={this.handleChange}
           />
           <h3>Education</h3>
           <hr />
-          <Education />
+          <Education
+            educationInfo={educationInfo}
+            handleChange={this.handleChange}
+          />
           <h3>Work Experience</h3>
           <hr />
           <PracticalExperience />
