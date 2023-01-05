@@ -14,6 +14,12 @@ class Form extends React.Component {
         studyLevel: '',
         studyDate: '',
       },
+      practicalExperience: {
+        companyName: '',
+        datesWorkedStart: '',
+        datesWorkedEnd: '',
+        workDescription: '',
+      },
     };
   }
 
@@ -25,7 +31,7 @@ class Form extends React.Component {
   };
 
   render() {
-    const { generalInfo, educationInfo } = this.state;
+    const { generalInfo, educationInfo, practicalExperience } = this.state;
     return (
       <div className="cvform">
         <form>
@@ -43,7 +49,10 @@ class Form extends React.Component {
           />
           <h3>Work Experience</h3>
           <hr />
-          <PracticalExperience />
+          <PracticalExperience
+            practicalExperienceInfo={practicalExperience}
+            handleChange={this.handleChange}
+          />
           <button type="button" className="submit-btn">
             Submit
           </button>

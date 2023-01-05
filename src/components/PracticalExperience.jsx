@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class PracticalExperience extends React.Component {
   render() {
+    const { handleChange, ...practicalExperienceInfo } = this.props;
     return (
       <div className="practicalexperience">
         <div className="input-container">
           <label htmlFor="companyname">Company Name</label>
-          <input type="text" name="companyname" />
+          <input
+            type="text"
+            name="companyname"
+            value={practicalExperienceInfo.companyName}
+            onChange={handleChange}
+          />
           <label htmlFor="positiontitle">Position title</label>
           <input type="text" name="positiontitle" />
         </div>
@@ -30,5 +37,12 @@ class PracticalExperience extends React.Component {
     );
   }
 }
+
+PracticalExperience.propTypes = {
+  practicalExperienceInfo: PropTypes.shape({
+    companyName: PropTypes.string,
+  }),
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default PracticalExperience;
