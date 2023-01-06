@@ -27,14 +27,17 @@ class App extends React.Component {
       view: 'formView',
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
     this.changeView = this.changeView.bind(this);
   }
 
-  handleChange(name, value) {
-    this.setState({
-      [name]: value,
-    });
+  handleChangeGeneral(name, value) {
+    this.setState((prevState) => ({
+      generalInfo: {
+        ...prevState.generalInfo,
+        [name]: value,
+      },
+    }));
   }
 
   changeView() {
@@ -63,7 +66,7 @@ class App extends React.Component {
           <Form
             currentView={view}
             changeView={this.changeView}
-            handleInputChange={this.handleChange}
+            handleInputChange={this.handleChangeGeneral}
             generalInfo={generalInfo}
             educationInfo={educationInfo}
             practicalExperienceInfo={practicalExperienceInfo}
