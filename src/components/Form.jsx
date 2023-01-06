@@ -6,35 +6,16 @@ import Education from './Education';
 import CvRendered from './CvRendered';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      generalInfo: { firstName: '', lastName: '', phone: '', email: '' },
-      educationInfo: {
-        schoolName: '',
-        degreeLevel: '',
-        studyLevel: '',
-        studyDate: '',
-      },
-      practicalExperience: {
-        companyName: '',
-        datesWorkedStart: '',
-        datesWorkedEnd: '',
-        workDescription: '',
-      },
-    };
-  }
-
-  handleChange = (e) => {
-    e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
   render() {
-    const { generalInfo, educationInfo, practicalExperience } = this.state;
-    const { currentView, changeView } = this.props;
+    const {
+      currentView,
+      changeView,
+      generalInfo,
+      educationInfo,
+      practicalExperienceInfo,
+      handleChange,
+    } = this.props;
+
     if (currentView === 'formView') {
       return (
         <div className="cvform">
@@ -43,19 +24,19 @@ class Form extends React.Component {
             <hr />
             <GeneralInfo
               generalInfo={generalInfo}
-              handleChange={this.handleChange}
+              handleChange={handleChange}
             />
             <h3>Education</h3>
             <hr />
             <Education
               educationInfo={educationInfo}
-              handleChange={this.handleChange}
+              handleChange={handleChange}
             />
             <h3>Work Experience</h3>
             <hr />
             <PracticalExperience
-              practicalExperienceInfo={practicalExperience}
-              handleChange={this.handleChange}
+              practicalExperienceInfo={practicalExperienceInfo}
+              handleChange={handleChange}
             />
             <button type="button" className="submit-btn" onClick={changeView}>
               Submit
@@ -80,6 +61,22 @@ class Form extends React.Component {
 Form.propTypes = {
   currentView: PropTypes.string,
   changeView: PropTypes.func,
+  handleChange: PropTypes.func,
+  educationInfo: PropTypes.shape({
+    schoolName: PropTypes.string.isRequired,
+    degreeLevel: PropTypes.string,
+    studyTitle: PropTypes.string,
+    studyDate: PropTypes.string,
+  }),
+  generalInfo: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+  practicalExperienceInfo: PropTypes.shape({
+    companyName: PropTypes.string,
+  }),
 };
 
 export default Form;
