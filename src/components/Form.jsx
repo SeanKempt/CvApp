@@ -15,7 +15,10 @@ class Form extends React.Component {
   handleChange(e) {
     e.preventDefault();
     const { handleInputChange } = this.props;
-    handleInputChange(e.target.name, e.target.value);
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    handleInputChange(name, value);
   }
 
   render() {

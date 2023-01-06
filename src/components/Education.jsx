@@ -10,30 +10,30 @@ class Education extends React.Component {
           <label htmlFor="schoolname">School Name</label>
           <input
             type="text"
-            name="schoolname"
+            name="schoolName"
             value={educationInfo.schoolName}
             onChange={handleChange}
           />
-          <label htmlFor="degreelevel">Degree Level</label>
+          <label htmlFor="degreeLevel">Degree Level</label>
           <input
             type="text"
-            name="degreelevel"
+            name="degreeLevel"
             value={educationInfo.degreeLevel}
             onChange={handleChange}
           />
         </div>
         <div className="input-container">
-          <label htmlFor="titleofstudy">Area of Study</label>
+          <label htmlFor="studyArea">Area of Study</label>
           <input
             type="text"
-            name="titleofstudy"
-            value={educationInfo.studyTitle}
+            name="studyArea"
+            value={educationInfo.studyArea}
             onChange={handleChange}
           />
-          <label htmlFor="dateofstudy">Date of Study</label>
+          <label htmlFor="studyDate">Date of Study</label>
           <input
             type="date"
-            name="dateofstudy"
+            name="studyDate"
             value={educationInfo.studyDate}
             onChange={handleChange}
           />
@@ -48,7 +48,7 @@ Education.propTypes = {
   educationInfo: PropTypes.shape({
     schoolName: PropTypes.string.isRequired,
     degreeLevel: PropTypes.string,
-    studyTitle: PropTypes.string,
+    studyArea: PropTypes.string,
     studyDate: PropTypes.string,
   }),
 };

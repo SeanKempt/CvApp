@@ -2,19 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class CvRendered extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { generalInfo, changeView } = this.props;
-    const { firstName, lastName, email, phone } = generalInfo;
+    const { changeView, ...generalInfo } = this.props;
     return (
       <div>
         <h1>
-          Hello {firstName} {lastName}
+          Hello {generalInfo.firstName} {generalInfo.lastName}
         </h1>
-        <p>{`${email} ${phone}`}</p>
+        <p>{`${generalInfo.email} ${generalInfo.phone}`}</p>
         <button type="button" className="edit-btn" onClick={changeView}>
           Edit
         </button>

@@ -14,13 +14,14 @@ class App extends React.Component {
       educationInfo: {
         schoolName: '',
         degreeLevel: '',
-        studyLevel: '',
+        studyArea: '',
         studyDate: '',
       },
       practicalExperienceInfo: {
         companyName: '',
         datesWorkedStart: '',
         datesWorkedEnd: '',
+        positionTitle: '',
         workDescription: '',
       },
       view: 'formView',
