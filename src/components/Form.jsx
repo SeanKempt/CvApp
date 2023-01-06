@@ -52,13 +52,7 @@ class Form extends React.Component {
               practicalExperienceInfo={practicalExperienceInfo}
               handleChange={this.handleChange}
             />
-            <button
-              type="button"
-              className="submit-btn"
-              onClick={() => {
-                console.log(educationInfo);
-              }}
-            >
+            <button type="button" className="submit-btn" onClick={changeView}>
               Submit
             </button>
             <button type="button" className="edit-btn">
