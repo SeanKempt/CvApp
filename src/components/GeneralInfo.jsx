@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class GeneralInfo extends React.Component {
   render() {
-    const { handleChange, ...generalInfo } = this.props;
+    const { handleChange, generalInfo } = this.props;
     return (
       <div className="generalinfo">
         <div className="input-container">

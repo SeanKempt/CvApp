@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class PracticalExperience extends React.Component {
   render() {
-    const { handleChange, ...practicalExperienceInfo } = this.props;
+    const { handleChange, practicalExperienceInfo } = this.props;
     return (
       <div className="practicalexperience">
         <div className="input-container">

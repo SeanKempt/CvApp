@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Education extends React.Component {
   render() {
-    const { handleChange, ...educationInfo } = this.props;
+    const { handleChange, educationInfo } = this.props;
     return (
       <div className="education">
         <div className="input-container">

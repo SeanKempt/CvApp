@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class CvRendered extends React.Component {
   render() {
-    const { changeView, ...generalInfo } = this.props;
+    const { changeView, generalInfo } = this.props;
     return (
       <div>
         <h1>
