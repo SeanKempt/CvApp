@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 class PracticalExperience extends React.Component {
   render() {
-    const { handleChange, ...practicalExperienceInfo } = this.props;
+    const { handleChange, practicalExperienceInfo } = this.props;
     return (
       <div className="practicalexperience">
         <div className="input-container">
-          <label htmlFor="companyname">Company Name</label>
+          <label htmlFor="companyName">Company Name</label>
           <input
             type="text"
-            name="companyname"
+            name="companyName"
             value={practicalExperienceInfo.companyName}
             onChange={handleChange}
           />
           <label htmlFor="positiontitle">Position title</label>
-          <input type="text" name="positiontitle" />
+          <input type="text" name="positionTitle" />
         </div>
 
         <div className="input-container">

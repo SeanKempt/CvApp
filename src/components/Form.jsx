@@ -8,35 +8,28 @@ import CvRendered from './CvRendered';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      generalInfo: { firstName: '', lastName: '', phone: '', email: '' },
-      educationInfo: {
-        schoolName: '',
-        degreeLevel: '',
-        studyLevel: '',
-        studyDate: '',
-      },
-      practicalExperience: {
-        companyName: '',
-        datesWorkedStart: '',
-        datesWorkedEnd: '',
-        workDescription: '',
-      },
-    };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = (e) => {
+  handleChange(e) {
+    e.preventDefault();
+    const { handleInputChange } = this.props;
     const { target } = e;
     const { name } = target;
-    e.preventDefault();
-    this.setState({
-      [name]: e.target.value,
-    });
-  };
+    const { value } = target;
+    handleInputChange(name, value);
+  }
 
   render() {
-    const { generalInfo, educationInfo, practicalExperience } = this.state;
-    const { currentView, changeView } = this.props;
+    const {
+      currentView,
+      changeView,
+      generalInfo,
+      educationInfo,
+      practicalExperienceInfo,
+    } = this.props;
+
     if (currentView === 'formView') {
       return (
         <div className="cvform">
@@ -56,7 +49,7 @@ class Form extends React.Component {
             <h3>Work Experience</h3>
             <hr />
             <PracticalExperience
-              practicalExperienceInfo={practicalExperience}
+              practicalExperienceInfo={practicalExperienceInfo}
               handleChange={this.handleChange}
             />
             <button
@@ -88,6 +81,22 @@ class Form extends React.Component {
 Form.propTypes = {
   currentView: PropTypes.string,
   changeView: PropTypes.func,
+  handleInputChange: PropTypes.func,
+  educationInfo: PropTypes.shape({
+    schoolName: PropTypes.string.isRequired,
+    degreeLevel: PropTypes.string,
+    studyTitle: PropTypes.string,
+    studyDate: PropTypes.string,
+  }),
+  generalInfo: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+  practicalExperienceInfo: PropTypes.shape({
+    companyName: PropTypes.string,
+  }),
 };
 
 export default Form;

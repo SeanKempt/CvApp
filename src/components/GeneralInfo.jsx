@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 class GeneralInfo extends React.Component {
   render() {
-    const { handleChange, ...generalInfo } = this.props;
+    const { handleChange, generalInfo } = this.props;
     return (
       <div className="generalinfo">
         <div className="input-container">
-          <label htmlFor="firstname">First Name</label>
+          <label htmlFor="firstName">First Name</label>
           <input
             type="text"
-            name="firstname"
+            name="firstName"
             className="firstname"
             value={generalInfo.firstName}
             onChange={handleChange}
@@ -25,17 +25,17 @@ class GeneralInfo extends React.Component {
         </div>
 
         <div className="input-container">
-          <label htmlFor="lastname">Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
-            name="lastname"
+            name="lastName"
             value={generalInfo.lastName}
             onChange={handleChange}
           />
-          <label htmlFor="emailaddress">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
-            name="emailaddress"
+            name="email"
             value={generalInfo.email}
             onChange={handleChange}
           />
