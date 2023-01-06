@@ -26,9 +26,11 @@ class Form extends React.Component {
   }
 
   handleChange = (e) => {
+    const { target } = e;
+    const { name } = target;
     e.preventDefault();
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: e.target.value,
     });
   };
 
@@ -57,7 +59,13 @@ class Form extends React.Component {
               practicalExperienceInfo={practicalExperience}
               handleChange={this.handleChange}
             />
-            <button type="button" className="submit-btn" onClick={changeView}>
+            <button
+              type="button"
+              className="submit-btn"
+              onClick={() => {
+                console.log(educationInfo);
+              }}
+            >
               Submit
             </button>
             <button type="button" className="edit-btn">
