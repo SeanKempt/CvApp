@@ -6,6 +6,18 @@ import Education from './Education';
 import CvRendered from './CvRendered';
 
 class Form extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    const { handleInputChange } = this.props;
+    handleInputChange(e.target.name, e.target.value);
+  }
+
   render() {
     const {
       currentView,
@@ -13,7 +25,6 @@ class Form extends React.Component {
       generalInfo,
       educationInfo,
       practicalExperienceInfo,
-      handleChange,
     } = this.props;
 
     if (currentView === 'formView') {
@@ -24,19 +35,19 @@ class Form extends React.Component {
             <hr />
             <GeneralInfo
               generalInfo={generalInfo}
-              handleChange={handleChange}
+              handleChange={this.handleChange}
             />
             <h3>Education</h3>
             <hr />
             <Education
               educationInfo={educationInfo}
-              handleChange={handleChange}
+              handleChange={this.handleChange}
             />
             <h3>Work Experience</h3>
             <hr />
             <PracticalExperience
               practicalExperienceInfo={practicalExperienceInfo}
-              handleChange={handleChange}
+              handleChange={this.handleChange}
             />
             <button type="button" className="submit-btn" onClick={changeView}>
               Submit
@@ -61,7 +72,7 @@ class Form extends React.Component {
 Form.propTypes = {
   currentView: PropTypes.string,
   changeView: PropTypes.func,
-  handleChange: PropTypes.func,
+  handleInputChange: PropTypes.func,
   educationInfo: PropTypes.shape({
     schoolName: PropTypes.string.isRequired,
     degreeLevel: PropTypes.string,

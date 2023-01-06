@@ -2,8 +2,8 @@ import React from 'react';
 import Form from './components/Form';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       generalInfo: {
         firstName: '',
@@ -25,16 +25,18 @@ class App extends React.Component {
       },
       view: 'formView',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
 
-  handleChange = (e) => {
-    e.preventDefault();
+  handleChange(name, value) {
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
-  };
+  }
 
-  changeView = () => {
+  changeView() {
     const { view } = this.state;
     if (view === 'formView') {
       this.setState({
@@ -46,7 +48,7 @@ class App extends React.Component {
         view: 'formView',
       });
     }
-  };
+  }
 
   render() {
     const { view, generalInfo, educationInfo, practicalExperienceInfo } =
@@ -60,7 +62,7 @@ class App extends React.Component {
           <Form
             currentView={view}
             changeView={this.changeView}
-            handleChange={this.handleChange}
+            handleInputChange={this.handleChange}
             generalInfo={generalInfo}
             educationInfo={educationInfo}
             practicalExperienceInfo={practicalExperienceInfo}

@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class CvRendered extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const { generalInfo, changeView } = this.props;
     const { firstName, lastName, email, phone } = generalInfo;
