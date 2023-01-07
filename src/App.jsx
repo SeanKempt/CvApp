@@ -28,6 +28,8 @@ class App extends React.Component {
     };
 
     this.handleChangeGeneral = this.handleChangeGeneral.bind(this);
+    this.handleChangeEducation = this.handleChangeEducation.bind(this);
+    this.handleChangePractical = this.handleChangePractical.bind(this);
     this.changeView = this.changeView.bind(this);
   }
 
@@ -35,6 +37,24 @@ class App extends React.Component {
     this.setState((prevState) => ({
       generalInfo: {
         ...prevState.generalInfo,
+        [name]: value,
+      },
+    }));
+  }
+
+  handleChangeEducation(name, value) {
+    this.setState((prevState) => ({
+      educationInfo: {
+        ...prevState.educationInfo,
+        [name]: value,
+      },
+    }));
+  }
+
+  handleChangePractical(name, value) {
+    this.setState((prevState) => ({
+      practicalExperienceInfo: {
+        ...prevState.practicalExperienceInfo,
         [name]: value,
       },
     }));
@@ -66,7 +86,8 @@ class App extends React.Component {
           <Form
             currentView={view}
             changeView={this.changeView}
-            handleInputChange={this.handleChangeGeneral}
+            handleChangeGeneral={this.handleChangeGeneral}
+            handleChangeEducation={this.handleChangeEducation}
             generalInfo={generalInfo}
             educationInfo={educationInfo}
             practicalExperienceInfo={practicalExperienceInfo}

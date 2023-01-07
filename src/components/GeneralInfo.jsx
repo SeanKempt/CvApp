@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class GeneralInfo extends React.Component {
   render() {
-    const { handleChange, generalInfo } = this.props;
+    const { handleChangeGeneral, generalInfo } = this.props;
     return (
       <div className="generalinfo">
         <div className="input-container">
@@ -13,14 +13,14 @@ class GeneralInfo extends React.Component {
             name="firstName"
             className="firstname"
             value={generalInfo.firstName}
-            onChange={handleChange}
+            onChange={handleChangeGeneral}
           />
           <label htmlFor="phone">Phone</label>
           <input
             type="tel"
             name="phone"
             value={generalInfo.phone}
-            onChange={handleChange}
+            onChange={handleChangeGeneral}
           />
         </div>
 
@@ -30,14 +30,14 @@ class GeneralInfo extends React.Component {
             type="text"
             name="lastName"
             value={generalInfo.lastName}
-            onChange={handleChange}
+            onChange={handleChangeGeneral}
           />
           <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
             value={generalInfo.email}
-            onChange={handleChange}
+            onChange={handleChangeGeneral}
           />
         </div>
       </div>
@@ -52,7 +52,7 @@ GeneralInfo.propTypes = {
     phone: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
   }),
-  handleChange: PropTypes.func.isRequired,
+  handleChangeGeneral: PropTypes.func.isRequired,
 };
 
 export default GeneralInfo;

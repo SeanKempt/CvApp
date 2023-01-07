@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class PracticalExperience extends React.Component {
   render() {
-    const { handleChange, practicalExperienceInfo } = this.props;
+    const { handleChangePractical, practicalExperienceInfo } = this.props;
     return (
       <div className="practicalexperience">
         <div className="input-container">
@@ -12,18 +12,35 @@ class PracticalExperience extends React.Component {
             type="text"
             name="companyName"
             value={practicalExperienceInfo.companyName}
-            onChange={handleChange}
+            onChange={handleChangePractical}
           />
           <label htmlFor="positiontitle">Position title</label>
-          <input type="text" name="positionTitle" />
+          <input
+            type="text"
+            name="positionTitle"
+            value={practicalExperienceInfo.positionTitle}
+            onChange={handleChangePractical}
+          />
         </div>
 
         <div className="input-container">
           <label htmlFor="datesworked">Dates Worked</label>
           <div>
-            <input type="date" name="datesworked" id="workstart" />
+            <input
+              type="date"
+              name="datesworked"
+              id="workstart"
+              value={practicalExperienceInfo.datesWorkedStart}
+              onChange={handleChangePractical}
+            />
             To
-            <input type="date" name="datesworked" id="workend" />
+            <input
+              type="date"
+              name="datesworked"
+              id="workend"
+              value={practicalExperienceInfo.datesWorkedEnd}
+              onChange={handleChangePractical}
+            />
           </div>
         </div>
         <label htmlFor="workdescription">Work Description</label>
@@ -32,6 +49,7 @@ class PracticalExperience extends React.Component {
           id="workdescription"
           cols="30"
           rows="10"
+          value={practicalExperienceInfo.workDescription}
         />
       </div>
     );
@@ -41,8 +59,12 @@ class PracticalExperience extends React.Component {
 PracticalExperience.propTypes = {
   practicalExperienceInfo: PropTypes.shape({
     companyName: PropTypes.string,
+    positionTitle: PropTypes.string,
+    datesWorkedStart: PropTypes.string,
+    datesWorkedEnd: PropTypes.string,
+    workDescription: PropTypes.string,
   }),
-  handleChange: PropTypes.func.isRequired,
+  handleChangePractical: PropTypes.func.isRequired,
 };
 
 export default PracticalExperience;

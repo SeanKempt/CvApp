@@ -6,20 +6,32 @@ import Education from './Education';
 import CvRendered from './CvRendered';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
+  handleChangeGeneral = (e) => {
     e.preventDefault();
-    const { handleInputChange } = this.props;
+    const { handleChangeGeneral } = this.props;
     const { target } = e;
     const { name } = target;
     const { value } = target;
-    handleInputChange(name, value);
-  }
+    handleChangeGeneral(name, value);
+  };
+
+  handleChangeEducation = (e) => {
+    e.preventDefault();
+    const { handleChangeEducation } = this.props;
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    handleChangeEducation(name, value);
+  };
+
+  handleChangePractical = (e) => {
+    e.preventDefault();
+    const { handleChangePractical } = this.props;
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    handleChangePractical(name, value);
+  };
 
   render() {
     const {
@@ -38,19 +50,19 @@ class Form extends React.Component {
             <hr />
             <GeneralInfo
               generalInfo={generalInfo}
-              handleChange={this.handleChange}
+              handleChangeGeneral={this.handleChangeGeneral}
             />
             <h3>Education</h3>
             <hr />
             <Education
               educationInfo={educationInfo}
-              handleChange={this.handleChange}
+              handleChangeEducation={this.handleChangeEducation}
             />
             <h3>Work Experience</h3>
             <hr />
             <PracticalExperience
               practicalExperienceInfo={practicalExperienceInfo}
-              handleChange={this.handleChange}
+              handleChangePractical={this.handleChangePractical}
             />
             <button type="button" className="submit-btn" onClick={changeView}>
               Submit
@@ -75,7 +87,9 @@ class Form extends React.Component {
 Form.propTypes = {
   currentView: PropTypes.string,
   changeView: PropTypes.func,
-  handleInputChange: PropTypes.func,
+  handleChangeGeneral: PropTypes.func,
+  handleChangeEducation: PropTypes.func,
+  handleChangePractical: PropTypes.func,
   educationInfo: PropTypes.shape({
     schoolName: PropTypes.string.isRequired,
     degreeLevel: PropTypes.string,
@@ -90,6 +104,10 @@ Form.propTypes = {
   }),
   practicalExperienceInfo: PropTypes.shape({
     companyName: PropTypes.string,
+    positionTitle: PropTypes.string,
+    datesWorkedStart: PropTypes.string,
+    datesWorkedEnd: PropTypes.string,
+    workDescription: PropTypes.string,
   }),
 };
 

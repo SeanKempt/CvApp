@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Education extends React.Component {
   render() {
-    const { handleChange, educationInfo } = this.props;
+    const { handleChangeEducation, educationInfo } = this.props;
     return (
       <div className="education">
         <div className="input-container">
@@ -12,14 +12,14 @@ class Education extends React.Component {
             type="text"
             name="schoolName"
             value={educationInfo.schoolName}
-            onChange={handleChange}
+            onChange={handleChangeEducation}
           />
           <label htmlFor="degreeLevel">Degree Level</label>
           <input
             type="text"
             name="degreeLevel"
             value={educationInfo.degreeLevel}
-            onChange={handleChange}
+            onChange={handleChangeEducation}
           />
         </div>
         <div className="input-container">
@@ -28,14 +28,14 @@ class Education extends React.Component {
             type="text"
             name="studyArea"
             value={educationInfo.studyArea}
-            onChange={handleChange}
+            onChange={handleChangeEducation}
           />
           <label htmlFor="studyDate">Date of Study</label>
           <input
             type="date"
             name="studyDate"
             value={educationInfo.studyDate}
-            onChange={handleChange}
+            onChange={handleChangeEducation}
           />
         </div>
       </div>
@@ -44,7 +44,7 @@ class Education extends React.Component {
 }
 
 Education.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleChangeEducation: PropTypes.func.isRequired,
   educationInfo: PropTypes.shape({
     schoolName: PropTypes.string.isRequired,
     degreeLevel: PropTypes.string,
