@@ -6,6 +6,7 @@ import Education from './Education';
 import CvRendered from './CvRendered';
 
 class Form extends React.Component {
+  // passing handle change functions from parent app.jsx to this componenet as props
   handleChangeGeneral = (e) => {
     e.preventDefault();
     const { handleChangeGeneral } = this.props;

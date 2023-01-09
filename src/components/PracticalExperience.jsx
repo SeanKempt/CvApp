@@ -50,6 +50,7 @@ class PracticalExperience extends React.Component {
           cols="30"
           rows="10"
           value={practicalExperienceInfo.workDescription}
+          onChange={handleChangePractical}
         />
       </div>
     );

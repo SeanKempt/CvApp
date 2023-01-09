@@ -88,6 +88,7 @@ class App extends React.Component {
             changeView={this.changeView}
             handleChangeGeneral={this.handleChangeGeneral}
             handleChangeEducation={this.handleChangeEducation}
+            handleChangePractical={this.handleChangePractical}
             generalInfo={generalInfo}
             educationInfo={educationInfo}
             practicalExperienceInfo={practicalExperienceInfo}
