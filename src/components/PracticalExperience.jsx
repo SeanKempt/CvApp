@@ -14,7 +14,7 @@ class PracticalExperience extends React.Component {
             value={practicalExperienceInfo.companyName}
             onChange={handleChangePractical}
           />
-          <label htmlFor="positiontitle">Position title</label>
+          <label htmlFor="positionTitle">Position title</label>
           <input
             type="text"
             name="positionTitle"
@@ -24,11 +24,11 @@ class PracticalExperience extends React.Component {
         </div>
 
         <div className="input-container">
-          <label htmlFor="datesworked">Dates Worked</label>
+          <label htmlFor="datesWorkedStart">Dates Worked</label>
           <div>
             <input
               type="date"
-              name="datesworked"
+              name="datesWorkedStart"
               id="workstart"
               value={practicalExperienceInfo.datesWorkedStart}
               onChange={handleChangePractical}
@@ -36,17 +36,17 @@ class PracticalExperience extends React.Component {
             To
             <input
               type="date"
-              name="datesworked"
+              name="datesWorkedEnd"
               id="workend"
               value={practicalExperienceInfo.datesWorkedEnd}
               onChange={handleChangePractical}
             />
           </div>
         </div>
-        <label htmlFor="workdescription">Work Description</label>
+        <label htmlFor="workDescription">Work Description</label>
         <textarea
-          name="workdescription"
-          id="workdescription"
+          name="workDescription"
+          id="workDescription"
           cols="30"
           rows="10"
           value={practicalExperienceInfo.workDescription}

@@ -78,7 +78,12 @@ class Form extends React.Component {
     if (currentView === 'cvView') {
       return (
         <div>
-          <CvRendered generalInfo={generalInfo} changeView={changeView} />
+          <CvRendered
+            generalInfo={generalInfo}
+            changeView={changeView}
+            educationInfo={educationInfo}
+            practicalExperienceInfo={practicalExperienceInfo}
+          />
         </div>
       );
     }
