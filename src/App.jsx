@@ -92,7 +92,7 @@ class App extends React.Component {
             generalInfo={generalInfo}
             educationInfo={educationInfo}
             practicalExperienceInfo={practicalExperienceInfo}
-          />
+g          />
         </main>
         <footer className="footer">Created by Sean Kempt</footer>
       </div>
