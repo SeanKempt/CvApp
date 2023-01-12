@@ -1,4 +1,5 @@
 import React from 'react';
+import uniqid from 'uniqid';
 import Form from './components/Form.jsx';
 
 class App extends React.Component {
@@ -17,13 +18,16 @@ class App extends React.Component {
         studyArea: '',
         studyDate: '',
       },
-      practicalExperienceInfo: {
-        companyName: '',
-        datesWorkedStart: '',
-        datesWorkedEnd: '',
-        positionTitle: '',
-        workDescription: '',
-      },
+      practicalExperienceInfo: [
+        {
+          id: uniqid(),
+          companyName: '',
+          datesWorkedStart: '',
+          datesWorkedEnd: '',
+          positionTitle: '',
+          workDescription: '',
+        },
+      ],
       view: 'formView',
     };
 
@@ -51,14 +55,28 @@ class App extends React.Component {
     }));
   }
 
-  handleChangePractical(name, value) {
-    this.setState((prevState) => ({
-      practicalExperienceInfo: {
-        ...prevState.practicalExperienceInfo,
-        [name]: value,
-      },
-    }));
-  }
+  // this state handler is passed as a prop to form and then passed to the component as a prop
+  handleChangePractical = (name, value, index) => {
+    const { practicalExperienceInfo } = this.state;
+    practicalExperienceInfo[index][name] = value;
+    this.setState({ practicalExperienceInfo });
+  };
+
+  addWorkExperience = (e) => {
+    e.preventDefault();
+    const { practicalExperienceInfo } = this.state;
+    const obj = {
+      id: uniqid(),
+      companyName: '',
+      datesWorkedStart: '',
+      datesWorkedEnd: '',
+      positionTitle: '',
+      workDescription: '',
+    };
+    this.setState({
+      practicalExperienceInfo: [...practicalExperienceInfo, obj],
+    });
+  };
 
   changeView() {
     const { view } = this.state;
@@ -92,7 +110,8 @@ class App extends React.Component {
             generalInfo={generalInfo}
             educationInfo={educationInfo}
             practicalExperienceInfo={practicalExperienceInfo}
-g          />
+            addWorkExperience={this.addWorkExperience}
+          />
         </main>
         <footer className="footer">Created by Sean Kempt</footer>
       </div>

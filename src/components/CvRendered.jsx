@@ -22,13 +22,17 @@ class CvRendered extends React.Component {
           <hr />
           <h2 id="work-title">Work Experience</h2>
           <div className="workexperience">
-            <h3>{practicalExperienceInfo.companyName}</h3>
-            <p>{practicalExperienceInfo.positionTitle}</p>
-            <p>
-              {`${practicalExperienceInfo.datesWorkedStart} -
-                ${practicalExperienceInfo.datesWorkedEnd}`}
-            </p>
-            <p>{practicalExperienceInfo.workDescription}</p>
+            {practicalExperienceInfo.map((entry) => (
+              <div key={entry.id}>
+                <h3>{entry.companyName}</h3>
+                <p>{entry.positionTitle}</p>
+                <p>
+                  {`${entry.datesWorkedStart} -
+                    ${entry.datesWorkedEnd}`}
+                </p>
+                <p>{entry.workDescription}</p>
+              </div>
+            ))}
           </div>
           <hr />
           <h2 id="education-title">Education</h2>
@@ -55,13 +59,7 @@ CvRendered.propTypes = {
     email: PropTypes.string,
     phone: PropTypes.string,
   }),
-  practicalExperienceInfo: PropTypes.shape({
-    companyName: PropTypes.string,
-    positionTitle: PropTypes.string,
-    datesWorkedStart: PropTypes.string,
-    datesWorkedEnd: PropTypes.string,
-    workDescription: PropTypes.string,
-  }),
+  practicalExperienceInfo: PropTypes.array,
   educationInfo: PropTypes.shape({
     schoolName: PropTypes.string,
     degreeLevel: PropTypes.string,
