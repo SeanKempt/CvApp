@@ -3,68 +3,74 @@ import PropTypes from 'prop-types';
 
 class PracticalExperience extends React.Component {
   render() {
-    const { handleChangePractical, practicalExperienceInfo } = this.props;
-    return (
-      <div className="practicalexperience">
-        <div className="input-container">
-          <label htmlFor="companyName">Company Name</label>
-          <input
-            type="text"
-            name="companyName"
-            value={practicalExperienceInfo.companyName}
-            onChange={handleChangePractical}
-          />
-          <label htmlFor="positionTitle">Position title</label>
-          <input
-            type="text"
-            name="positionTitle"
-            value={practicalExperienceInfo.positionTitle}
-            onChange={handleChangePractical}
-          />
-        </div>
+    const {
+      handleChangePractical,
+      practicalExperienceInfo,
+      addWorkExperience,
+    } = this.props;
 
-        <div className="input-container">
-          <label htmlFor="datesWorkedStart">Dates Worked</label>
-          <div>
-            <input
-              type="date"
-              name="datesWorkedStart"
-              id="workstart"
-              value={practicalExperienceInfo.datesWorkedStart}
-              onChange={handleChangePractical}
-            />
-            To
-            <input
-              type="date"
-              name="datesWorkedEnd"
-              id="workend"
-              value={practicalExperienceInfo.datesWorkedEnd}
-              onChange={handleChangePractical}
+    return (
+      <div>
+        {practicalExperienceInfo.map((entry, index) => (
+          <div className="practicalexperience" key={index}>
+            <div className="input-container">
+              <label htmlFor="companyName">Company Name</label>
+              <input
+                type="text"
+                name="companyName"
+                value={entry.companyName}
+                onChange={(e) => handleChangePractical(e, index)}
+              />
+              <label htmlFor="positionTitle">Position title</label>
+              <input
+                type="text"
+                name="positionTitle"
+                value={entry.positionTitle}
+                onChange={(e) => handleChangePractical(e, index)}
+              />
+            </div>
+            <div className="input-container">
+              <label htmlFor="datesWorkedStart">Dates Worked</label>
+              <div>
+                <input
+                  type="date"
+                  name="datesWorkedStart"
+                  id="workstart"
+                  value={entry.datesWorkedStart}
+                  onChange={(e) => handleChangePractical(e, index)}
+                />
+                To
+                <input
+                  type="date"
+                  name="datesWorkedEnd"
+                  id="workend"
+                  value={entry.datesWorkedEnd}
+                  onChange={(e) => handleChangePractical(e, index)}
+                />
+              </div>
+            </div>
+            <label htmlFor="workDescription">Work Description</label>
+            <textarea
+              name="workDescription"
+              id="workDescription"
+              cols="30"
+              rows="10"
+              value={entry.workDescription}
+              onChange={(e) => handleChangePractical(e, index)}
             />
           </div>
-        </div>
-        <label htmlFor="workDescription">Work Description</label>
-        <textarea
-          name="workDescription"
-          id="workDescription"
-          cols="30"
-          rows="10"
-          value={practicalExperienceInfo.workDescription}
-          onChange={handleChangePractical}
-        />
+        ))}
+        <button type="button" onClick={addWorkExperience}>
+          Add Work Experience
+        </button>
       </div>
     );
   }
 }
 
 PracticalExperience.propTypes = {
-  practicalExperienceInfo: PropTypes.shape({
-    companyName: PropTypes.string,
-    positionTitle: PropTypes.string,
-    datesWorkedStart: PropTypes.string,
-    datesWorkedEnd: PropTypes.string,
-    workDescription: PropTypes.string,
-  }),
+  practicalExperienceInfo: PropTypes.array,
+  addWorkExperience: PropTypes.func,
   handleChangePractical: PropTypes.func.isRequired,
 };
 

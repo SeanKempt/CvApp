@@ -25,13 +25,13 @@ class Form extends React.Component {
     handleChangeEducation(name, value);
   };
 
-  handleChangePractical = (e) => {
+  handleChangePractical = (e, index) => {
     e.preventDefault();
     const { handleChangePractical } = this.props;
     const { target } = e;
     const { name } = target;
     const { value } = target;
-    handleChangePractical(name, value);
+    handleChangePractical(name, value, index);
   };
 
   render() {
@@ -41,6 +41,7 @@ class Form extends React.Component {
       generalInfo,
       educationInfo,
       practicalExperienceInfo,
+      addWorkExperience,
     } = this.props;
 
     if (currentView === 'formView') {
@@ -64,6 +65,7 @@ class Form extends React.Component {
             <PracticalExperience
               practicalExperienceInfo={practicalExperienceInfo}
               handleChangePractical={this.handleChangePractical}
+              addWorkExperience={addWorkExperience}
             />
             <button type="button" className="submit-btn" onClick={changeView}>
               Submit
@@ -108,13 +110,8 @@ Form.propTypes = {
     phone: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
   }),
-  practicalExperienceInfo: PropTypes.shape({
-    companyName: PropTypes.string,
-    positionTitle: PropTypes.string,
-    datesWorkedStart: PropTypes.string,
-    datesWorkedEnd: PropTypes.string,
-    workDescription: PropTypes.string,
-  }),
+  practicalExperienceInfo: PropTypes.array,
+  addWorkExperience: PropTypes.func,
 };
 
 export default Form;
