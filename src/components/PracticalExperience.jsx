@@ -63,6 +63,7 @@ class PracticalExperience extends React.Component {
         <button type="button" onClick={addWorkExperience}>
           Add Work Experience
         </button>
+        <hr />
       </div>
     );
   }
