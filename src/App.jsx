@@ -16,14 +16,16 @@ const App = () => {
     studyArea: '',
     studyDate: '',
   });
-  const [practicalExperienceInfo, setPracticalExperienceInfo] = useState({
-    id: uniqid(),
-    companyName: '',
-    datesWorkedStart: '',
-    datesWorkedEnd: '',
-    positionTitle: '',
-    workDescription: '',
-  });
+  const [practicalExperienceInfo, setPracticalExperienceInfo] = useState([
+    {
+      id: uniqid(),
+      companyName: '',
+      datesWorkedStart: '',
+      datesWorkedEnd: '',
+      positionTitle: '',
+      workDescription: '',
+    },
+  ]);
   const [view, setView] = useState('formView');
 
   /* 
@@ -50,7 +52,7 @@ const App = () => {
 
   const handleChangePractical = (name, value, index) => {
     practicalExperienceInfo[index][name] = value;
-    setPracticalExperienceInfo({ practicalExperienceInfo });
+    setPracticalExperienceInfo(practicalExperienceInfo);
   };
 
   // to add additional state entries when end user wants to add additional work experience
@@ -64,9 +66,7 @@ const App = () => {
       positionTitle: '',
       workDescription: '',
     };
-    setPracticalExperienceInfo({
-      practicalExperienceInfo: [...practicalExperienceInfo, obj],
-    });
+    setPracticalExperienceInfo((prevState) => [...prevState, obj]);
   };
 
   // switches view between the form input and the finalized CV view

@@ -6,31 +6,6 @@ import Education from './Education';
 import CvRendered from './CvRendered';
 
 const Form = (props) => {
-  // passing handle change functions from parent app.jsx to this componenet as props and then passing props down to child components as needed
-  const handleChangeGeneral = (e) => {
-    e.preventDefault();
-    const { target } = e;
-    const { name } = target;
-    const { value } = target;
-    handleChangeGeneral(name, value);
-  };
-
-  const handleChangeEducation = (e) => {
-    e.preventDefault();
-    const { target } = e;
-    const { name } = target;
-    const { value } = target;
-    handleChangeEducation(name, value);
-  };
-
-  const handleChangePractical = (e, index) => {
-    e.preventDefault();
-    const { target } = e;
-    const { name } = target;
-    const { value } = target;
-    handleChangePractical(name, value, index);
-  };
-
   const {
     currentView,
     changeView,
@@ -38,7 +13,35 @@ const Form = (props) => {
     educationInfo,
     practicalExperienceInfo,
     addWorkExperience,
+    handleChangeGeneral,
+    handleChangeEducation,
+    handleChangePractical,
   } = props;
+  // passing handle change functions from parent app.jsx to this componenet as props and then passing props down to child components as needed
+  const handleChangeGeneralForm = (e) => {
+    e.preventDefault();
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    handleChangeGeneral(name, value);
+  };
+
+  const handleChangeEducationForm = (e) => {
+    e.preventDefault();
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    handleChangeEducation(name, value);
+  };
+
+  // Fix: need to understand what this needs to be changed to. Doesn't seem like its recognizing the event that is being passed
+  const handleChangePracticalForm = (e, index) => {
+    e.preventDefault();
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    handleChangePractical(name, value, index);
+  };
 
   // changes view based on the state of current view allowing for finalized CV to be rendered on same page when submitted
   if (currentView === 'formView') {
@@ -49,19 +52,19 @@ const Form = (props) => {
           <hr />
           <GeneralInfo
             generalInfo={generalInfo}
-            handleChangeGeneral={handleChangeGeneral}
+            handleChangeGeneral={handleChangeGeneralForm}
           />
           <h3>Education</h3>
           <hr />
           <Education
             educationInfo={educationInfo}
-            handleChangeEducation={handleChangeEducation}
+            handleChangeEducation={handleChangeEducationForm}
           />
           <h3>Work Experience</h3>
           <hr />
           <PracticalExperience
             practicalExperienceInfo={practicalExperienceInfo}
-            handleChangePractical={handleChangePractical}
+            handleChangePractical={handleChangePracticalForm}
             addWorkExperience={addWorkExperience}
           />
           <button type="button" className="submit-btn" onClick={changeView}>
@@ -88,6 +91,9 @@ const Form = (props) => {
 Form.propTypes = {
   currentView: PropTypes.string,
   changeView: PropTypes.func,
+  handleChangePractical: PropTypes.func,
+  handleChangeEducation: PropTypes.func,
+  handleChangeGeneral: PropTypes.func,
   educationInfo: PropTypes.shape({
     schoolName: PropTypes.string.isRequired,
     degreeLevel: PropTypes.string,
