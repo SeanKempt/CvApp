@@ -33,26 +33,16 @@ const App = () => {
     state handlers are passed as props to the form component
   */
   const handleChangeGeneral = (name, value) => {
-    setGeneralInfo((prevState) => ({
-      generalInfo: {
-        ...prevState.generalInfo,
-        [name]: value,
-      },
-    }));
+    setGeneralInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleChangeEducation = (name, value) => {
-    setEducationInfo((prevState) => ({
-      educationInfo: {
-        ...prevState.educationInfo,
-        [name]: value,
-      },
-    }));
+    setEducationInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleChangePractical = (name, value, index) => {
     practicalExperienceInfo[index][name] = value;
-    setPracticalExperienceInfo(practicalExperienceInfo);
+    setPracticalExperienceInfo([...practicalExperienceInfo]);
   };
 
   // to add additional state entries when end user wants to add additional work experience
@@ -72,14 +62,10 @@ const App = () => {
   // switches view between the form input and the finalized CV view
   const changeView = () => {
     if (view === 'formView') {
-      setView({
-        view: 'cvView',
-      });
+      setView('cvView');
     }
     if (view === 'cvView') {
-      setView({
-        view: 'formView',
-      });
+      setView('formView');
     }
   };
 
