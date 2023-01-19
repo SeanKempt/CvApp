@@ -17,8 +17,7 @@ const Form = (props) => {
     handleChangeEducation,
     handleChangePractical,
   } = props;
-
-  console.log(currentView);
+g
   // passing handle change functions from parent app.jsx to this componenet as props and then passing props down to child components as needed
   const handleChangeGeneralForm = (e) => {
     e.preventDefault();
